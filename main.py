@@ -29,7 +29,7 @@ listaTareas = list()
 #En este método agregamos una tarea al primer espacio vacío de la lista o al final. 
 def agregarTarea():
     
-       print ("Introduzca el nombre de la tarea pendiente a agregar")
+       print ("Introduzca el nombre de la tarea pendiente a agregar:")
        nuevaTarea = input()
        tarea1 = Tarea (nuevaTarea)
        try:
@@ -38,8 +38,8 @@ def agregarTarea():
        except:
             listaTareas.append(tarea1)
        finally:
-            print("\nTarea insertada correctamente. Pulsa cualquier tecla para continuar:")
-            a = input()
+            print("\nTarea insertada correctamente.")
+            mostrarTareas()
             casos ()
 #Método para completar una tarea. Recorre la lista para ver si existe el nombre introducido, si lo encuentra, llama a la función
 #para completar la tarea, si no lo encuentra, envía un mensaje de que la tarea no existe. Tras finalizar vuelve al menu. 
@@ -52,9 +52,9 @@ def completarTarea():
                 
                 if i.nombre == nombre:
                     i.completarTarea()
-                    existe = True
-                    print ("La tarea se ha completado. Pulsa intro para continuar:")
-                    a= input()
+                    existe = True                    
+                    print ("La tarea se ha completado. ")
+                    mostrarTareas()
                     break
            if existe == False:
                     print ("La tarea no existe")
@@ -83,7 +83,8 @@ def eliminarTarea():
                 if i.nombre == nombre:
                     listaTareas.remove(i)
                     existe = True
-                    print ("La tarea se ha eliminado correctamente. Pulsa intro para continuar:")
+                    print ("La tarea se ha eliminado correctamente.")
+                    mostrarTareas()
                     a= input()
                     break
             if existe == False:
