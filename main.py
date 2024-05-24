@@ -13,6 +13,7 @@ from Tarea import Tarea
 # • Eliminar una tarea: El programa deberá permitir al usuario eliminar una tarea de la lista,
 # dada su posición.
 
+#Menu de opciones que se muestran por patalla
 def menu():
     print ("Escoge una opción:\n")
     print ("1. Agregar una tarea.\n")
@@ -22,10 +23,10 @@ def menu():
     print ("5. Fin.\n")
     entrada = input ()
     return entrada
-
+#Declaramos una lista de tareas vacía
 listaTareas = list()
-contador = 0
 
+#En este método agregamos una tarea al primer espacio vacío de la lista o al final. 
 def agregarTarea():
     
        print ("Introduzca el nombre de la tarea pendiente a agregar")
@@ -40,7 +41,8 @@ def agregarTarea():
             print("\nTarea insertada correctamente. Pulsa cualquier tecla para continuar:")
             a = input()
             casos ()
-
+#Método para completar una tarea. Recorre la lista para ver si existe el nombre introducido, si lo encuentra, llama a la función
+#para completar la tarea, si no lo encuentra, envía un mensaje de que la tarea no existe. Tras finalizar vuelve al menu. 
 def completarTarea():
        print ("Introduzca el nombre de la tarea que desea completar")
        try:
@@ -62,13 +64,16 @@ def completarTarea():
             a = input()
        finally: 
             casos()
-
+#Función que recorre la lista de tareas y las muestra junto a su estado (completado o pendiente)
 def mostrarTareas():
       for i in listaTareas:
-            print (i.mostrarTarea())
+            print ("Tarea:"+ i.nombre + " ---> " + i.estado)
       print("\nPulsa intro para continuar:")
       a = input()
       casos ()
+
+#Función que elimina una tarea. Recorre el array comparandolo con el nombre introducido por el usuario. Si encuentra la tarea 
+#la borra y romple el bucle. Si no la encuentra muestra un mensaje por pantalla de que la tarea no se encontrado.
 def eliminarTarea():
        print ("Introduzca el nombre de la tarea que desea eliminar")
        try:
@@ -88,7 +93,8 @@ def eliminarTarea():
             a = input()
        finally: 
             casos ()
-
+#Esta función muestra el menu y recoge la respuesta que introduce el usuario. Dependiendo de la respuesta le envía a la
+#opción correspondiente. Si la respuesta introducida no es válida muestra un error por pantalla y vuelve a llamar al menu. 
 def casos ():   
     respuesta = menu()   
     if respuesta == "1": 
@@ -102,7 +108,7 @@ def casos ():
     elif respuesta == "5":
         print ("Terminando Programa")
     else:
-        print("Número inválido")
+        print("La opción introducida no es válida.")
         casos()
-
+#Se llama a la función casos para comenzar el programa. 
 casos()
